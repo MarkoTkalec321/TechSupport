@@ -13,5 +13,7 @@ public interface EventsService {
 
     EventModel addNew(EventModelCommand eventModelCommand);
 
+    EventModel update(EventModelCommand command, Long id);
+
 
 }

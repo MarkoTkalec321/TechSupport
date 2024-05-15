@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.service.annotation.PutExchange;
 
 import java.util.List;
 
@@ -31,5 +32,14 @@ public class EventController {
     {
         EventModel eventModel1 = eventsService.addNew(eventModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(eventModel1);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<EventModel> update(@RequestBody EventModelCommand eventModel, @PathVariable Long id)
+    {
+            EventModel eventModel1 = eventsService.update(eventModel, id);
+            return ResponseEntity.status(HttpStatus.OK).body(eventModel1);
+
+
     }
 }

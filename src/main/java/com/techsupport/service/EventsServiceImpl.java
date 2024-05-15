@@ -29,7 +29,23 @@ public class EventsServiceImpl implements EventsService {
 
     @Override
     public EventModel addNew(EventModelCommand command) {
-        System.out.println(command);
+        EventModel eventModel = mapper(command);
+        return eventsRepositoryJPA.save(eventModel);
+    }
+
+    @Override
+    public EventModel update(EventModelCommand command, Long id) {
+        EventModel oldModel = eventsRepositoryJPA.findById(id).get();
+        EventModel eventModel = mapper(command);
+        eventModel.setId(id);
+        eventModel.setComments(oldModel.getComments());
+
+        return eventsRepositoryJPA.save(eventModel);
+
+    }
+
+    private EventModel mapper(EventModelCommand command)
+    {
         EventModel eventModel = new EventModel();
         eventModel.setId(null);
         eventModel.setName(command.getName());
@@ -44,6 +60,6 @@ public class EventsServiceImpl implements EventsService {
         eventModel.setStatus(command.getStatus());
         eventModel.setComments(null);
         eventModel.setDateOfCreation(LocalDateTime.now());
-        return eventsRepositoryJPA.save(eventModel);
+        return eventModel;
     }
 }
