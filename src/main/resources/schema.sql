@@ -1,6 +1,6 @@
 -- Create events table
 CREATE TABLE EVENTS (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id BIGINT GENERATED ALWAYS AS IDENTITY,
     name VARCHAR(255),
     date_of_creation TIMESTAMP,
     affected_brand VARCHAR(255),
@@ -10,7 +10,8 @@ CREATE TABLE EVENTS (
     a_record VARCHAR(255),
     ns_record VARCHAR(255),
     mx_record VARCHAR(255),
-    status VARCHAR(255)
+    status VARCHAR(255),
+    PRIMARY KEY(id)
 );
 
 -- Create matching keywords table

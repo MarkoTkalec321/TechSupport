@@ -14,5 +14,7 @@ public interface EventsRepositoryJPA extends JpaRepository<EventModel, Long> {
 
     List<EventModel> findAllByNameIgnoreCase(String name);
 
+    EventModel save(EventModel eventModel);
+
 
 }

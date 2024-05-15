@@ -2,14 +2,12 @@ package com.techsupport.controller;
 
 
 import com.techsupport.model.EventModel;
+import com.techsupport.model.EventModelCommand;
 import com.techsupport.service.EventsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,4 +26,10 @@ public class EventController {
 
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<EventModel> addNew(@RequestBody EventModelCommand eventModel)
+    {
+        EventModel eventModel1 = eventsService.addNew(eventModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(eventModel1);
+    }
 }
