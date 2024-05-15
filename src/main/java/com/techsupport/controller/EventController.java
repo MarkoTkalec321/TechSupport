@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.service.annotation.PutExchange;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -40,8 +39,6 @@ public class EventController {
     {
             EventModel eventModel1 = eventsService.update(eventModel, id);
             return ResponseEntity.status(HttpStatus.OK).body(eventModel1);
-
-
     }
 
     @GetMapping("/search")
@@ -56,5 +53,4 @@ public class EventController {
 
         return ResponseEntity.ok(searchResults);
     }
-
 }
