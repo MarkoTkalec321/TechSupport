@@ -1,6 +1,7 @@
 package com.techsupport.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,9 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "EVENTS")
 public class EventModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
     private LocalDateTime dateOfCreation;
     private String affectedBrand;
@@ -27,11 +26,8 @@ public class EventModel {
     private String ARecord;
     private String NSRecord;
     private String MXRecord;
-    @ElementCollection
     private List<String> matchingKeywords;
-    @Enumerated(EnumType.STRING)
     private StatusEnum status;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "event")
-    private List<CommentsModel> comments;
+    private List<CommentsModel> commentsModels;
 
 }
