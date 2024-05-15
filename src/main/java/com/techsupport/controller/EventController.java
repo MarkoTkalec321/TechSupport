@@ -1,8 +1,11 @@
 package com.techsupport.controller;
 
 
+import com.techsupport.model.CommentsModelCommand;
+import com.techsupport.model.CommentsModel;
 import com.techsupport.model.EventModel;
 import com.techsupport.model.EventModelCommand;
+import com.techsupport.service.CommentsService;
 import com.techsupport.service.EventsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +21,8 @@ import java.util.List;
 public class EventController {
 
     private EventsService eventsService;
+
+    private CommentsService commentsService;
 
     @GetMapping("/all")
     public ResponseEntity<List<EventModel>> getAll()
@@ -39,6 +44,14 @@ public class EventController {
     {
             EventModel eventModel1 = eventsService.update(eventModel, id);
             return ResponseEntity.status(HttpStatus.OK).body(eventModel1);
+    }
+
+    @PostMapping("/{id}")
+    public ResponseEntity<CommentsModel> addComment(@RequestBody CommentsModelCommand command)
+    {
+        CommentsModel commentsModel = commentsService.addComent(command);
+        return ResponseEntity.status(HttpStatus.OK).body(commentsModel);
+
     }
 
     @GetMapping("/search")
