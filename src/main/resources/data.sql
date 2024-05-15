@@ -21,3 +21,12 @@ INSERT INTO COMMENTS (id, text, timestamp, event_id)
 VALUES (4, 'Comment 1 for Event 3', '2024-05-12 18:00:00', 3);
 INSERT INTO COMMENTS (id, text, timestamp, event_id)
 VALUES (5, 'Comment 2 for Event 3', '2024-05-12 19:00:00', 3);
+
+INSERT INTO users (id, email, password, username, name) VALUES (1, 'marko@gmail.com', '123456', 'marko123', 'tkalec123');
+
+-- Insert authority data
+INSERT INTO authorities (id, authority_name) VALUES (1, 'ROLE_ADMIN');
+INSERT INTO authorities (id, authority_name) VALUES (2, 'ROLE_USER');
+
+-- Insert user authority relationship
+INSERT INTO users_authorities (user_id, authority_id) VALUES (1, 1);
