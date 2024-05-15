@@ -32,11 +32,12 @@ CREATE TABLE COMMENTS (
 
 -- Users table
 CREATE TABLE users (
-                       id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                       id BIGINT GENERATED ALWAYS AS IDENTITY,
                        email VARCHAR(255) UNIQUE NOT NULL,
                        password VARCHAR(255) NOT NULL,
                        username VARCHAR(255) UNIQUE NOT NULL,
-                       name VARCHAR(255)
+                       name VARCHAR(255),
+                       PRIMARY KEY(id)
 );
 
 -- Authorities table
