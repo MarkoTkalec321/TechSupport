@@ -68,6 +68,7 @@
             http
                     .addFilterBefore(corsFilter, SessionManagementFilter.class)
                     .csrf(csrf -> csrf.disable())
+                    .cors(cors -> cors.disable())
                     .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
                     .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                     .authorizeHttpRequests(auth ->
@@ -80,38 +81,7 @@
                                     .anyRequest().authenticated()
 
 
-                                    /*.requestMatchers(HttpMethod.POST, "/item", "/item/").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.GET, "/item/value/**").authenticated()
 
-                                    .requestMatchers(HttpMethod.GET, "/item/check-name/**").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.GET, "item/category/**").permitAll()
-                                    .requestMatchers(HttpMethod.GET, "/item", "/item/").permitAll()
-
-                                    .requestMatchers(HttpMethod.PUT, "/item/**").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.DELETE, "/item/**").hasRole("ADMIN")
-
-                                    .requestMatchers(HttpMethod.GET, "/category", "/category/").permitAll()
-                                    .requestMatchers(HttpMethod.GET, "/category/check-name/**").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.POST, "/category", "/category/").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.DELETE,"/category/**").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.PUT,  "/category/**").hasRole("ADMIN")
-
-                                    .requestMatchers(HttpMethod.GET, "/order", "/order/").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.GET,  "/order/**").authenticated()
-                                    .requestMatchers(HttpMethod.POST, "/order", "/order/").authenticated()
-                                    .requestMatchers(HttpMethod.PUT,  "/order/**").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.DELETE,  "/order/**").hasRole("ADMIN")
-
-                                    .requestMatchers(HttpMethod.GET, "/order-status/**").permitAll()
-                                    .requestMatchers(HttpMethod.PUT, "/order-status/**").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.GET, "/order-status/value/**").permitAll()
-
-                                    .requestMatchers(HttpMethod.GET,  "/order-details").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.GET,  "/order-details/order/**").authenticated()
-
-                                    .requestMatchers(HttpMethod.GET, "/address", "/address/").hasRole("ADMIN")
-                                    .requestMatchers(HttpMethod.GET, "/users", "/users/").hasRole("ADMIN")
-    */
 
                     );
 

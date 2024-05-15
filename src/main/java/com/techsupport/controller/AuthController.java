@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+
 @RestController
 @RequestMapping(value = {"/api/auth", "/api/auth/"})
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600, allowCredentials = "true")
@@ -74,7 +75,7 @@ public class AuthController {
             return ResponseEntity.badRequest().body(new MessageResponse("Error: Email is already in use!"));
         }
 
-        // Create new user's account
+
         User user = new User(signUpRequest.getUsername(), signUpRequest.getName(), signUpRequest.getEmail(),
                 encoder.encode(signUpRequest.getPassword()));
 
