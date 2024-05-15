@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "EVENTS")
 public class EventModel {
+    private Integer id;
     private String name;
     private LocalDateTime dateOfCreation;
     private String affectedBrand;
@@ -27,6 +28,6 @@ public class EventModel {
     private String MXRecord;
     private List<String> matchingKeywords;
     private StatusEnum status;
-    List<CommentsModel>
+    private List<CommentsModel> commentsModels;
 
 }

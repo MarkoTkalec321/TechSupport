@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Table(name = "COMMENTS")
 public class CommentsModel {
+    private Integer id;
     private String text;
     private LocalDateTime timestamp;
 }
+
