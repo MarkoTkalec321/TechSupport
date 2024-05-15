@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.service.annotation.PutExchange;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -42,4 +43,18 @@ public class EventController {
 
 
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<EventModel>> search(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) LocalDate domainRegistrationDate,
+            @RequestParam(required = false) String affectedBrand,
+            @RequestParam(required = false, name="a_record") String A_Record,
+            @RequestParam(required = false) List<String> keywords) {
+
+        List<EventModel> searchResults = eventsService.search(name, domainRegistrationDate, affectedBrand, A_Record, keywords);
+
+        return ResponseEntity.ok(searchResults);
+    }
+
 }
