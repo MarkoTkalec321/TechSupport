@@ -24,14 +24,16 @@ public class EventModel {
     private String description;
     private String maliciousUrl;
     private LocalDate domainRegistrationDate;
-    private String ARecord;
-    private String NSRecord;
-    private String MXRecord;
+    private String A_Record;
+    private String NS_Record;
+    private String MX_Record;
     @ElementCollection
+    @Column(name = "matching_keywords")
     private List<String> matchingKeywords;
     @Enumerated(EnumType.STRING)
     private StatusEnum status;
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "event")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="event_id")
     private List<CommentsModel> comments;
 
 }

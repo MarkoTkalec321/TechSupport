@@ -18,8 +18,8 @@ public class CommentsModel {
     private Long id;
     private String text;
     private LocalDateTime timestamp;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "event_id")
-    private EventModel event;
+    //@ManyToOne(fetch = FetchType.LAZY)
+   // @JoinColumn(name = "event_id")
+   // private EventModel event;
 }
 
