@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EventsRepositoryJPA extends JpaRepository<EventModel, Integer> {
+public interface EventsRepositoryJPA extends JpaRepository<EventModel, Long> {
 
     List<EventModel> findAll();
 
